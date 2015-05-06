@@ -7,9 +7,19 @@ To contribute to this toolkit, first clone the repo and then.
 
 ## Gulp commands
 
-###Default
-Default gulp command will currently
- - Watch for changes in scripts and run tests
+
+###Jasmine
+Runs all of the Jasmine specs via karma
+=> `gulp test`
+
+###Jshint
+Checks JavaScript files for issues of code correctness
+=> `gulp jshint`
+
+###JSCS
+Checks JavaScript files for a uniform code style
+=> `gulp jscs`
 
 ###Test
-To run the unit tests in karma run `gulp test`
+Runs all test and code quality related tasks
+=> `gulp test`
