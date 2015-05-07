@@ -11,6 +11,7 @@
   "boss": true,
   "eqnull": true,
   "expr": true,
+  "unused": false,
   "globalstrict": true,
   "laxbreak": true,
   "loopfunc": true,
