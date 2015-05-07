@@ -1,7 +1,14 @@
-var karma = require('gulp-karma');
 var gulp = require('gulp');
+var karma = require('gulp-karma');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
+var connect = require('gulp-connect');
+var markdown = require('gulp-markdown');
+var runSequence = require('run-sequence');
+
+var paths = {
+  docs: './docs/**/*.md'
+};
 
 var scripts = [
   'lib/**/*.js',
@@ -33,5 +40,27 @@ gulp.task('jscs', function() {
     .pipe(jscs());
 });
 
+gulp.task('connect', function() {
+  connect.server({
+    root: '.tmp',
+    livereload: true
+  });
+});
+
+gulp.task('html', function () {
+  gulp.src(paths.docs)
+    .pipe(markdown())
+    .pipe(gulp.dest('.tmp'))
+    .pipe(connect.reload());
+});
+
+gulp.task('watch', function () {
+  gulp.watch([paths.docs], ['html']);
+});
+
 //Master test task
+gulp.task('serve', function() {
+  runSequence('html', 'connect', 'watch');
+});
+
 gulp.task('test', ['jshint', 'jscs', 'jasmine']);
