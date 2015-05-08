@@ -12,7 +12,7 @@ var paths = {
 
 var scripts = [
   'lib/**/*.js',
-  'test/**/*.js'
+  'test/**/*.js',
 ];
 
 gulp.task('jasmine', function() {
