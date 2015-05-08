@@ -13,15 +13,12 @@ var paths = {
 var scripts = [
   'lib/**/*.js',
   'test/**/*.js',
-<<<<<<< HEAD
 ];
 
 //FIXME: these are included here and in karma.conf.js
 var testDeps = [
   'node_modules/hogan.js/dist/hogan-3.0.2.js',
   'lib/templates/**/*.mustache'
-=======
->>>>>>> 15b6486bd0ec90193ba03264cccaf54341371519
 ];
 
 gulp.task('jasmine', function() {
