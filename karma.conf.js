@@ -18,7 +18,8 @@ module.exports = function(config) {
       'lib/scripts/**/*.js',
       'test/**/*Spec.js',
       {pattern: 'lib/templates/**/*.mustache', watched: false},
-      'node_modules/hogan.js/dist/hogan-3.0.2.js'
+      './node_modules/hogan.js/dist/hogan-3.0.2.js',
+      './node_modules/phantomjs-polyfill/bind-polyfill.js'
     ],
 
 
@@ -58,7 +59,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

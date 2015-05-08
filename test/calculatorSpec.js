@@ -15,7 +15,9 @@ describe('Calculator', function() {
 
   var changeInput = function(el, val) {
     el.value = val;
-    el.dispatchEvent(new Event('change'));
+    var event = document.createEvent('Event');
+    event.initEvent('change', true, true);
+    el.dispatchEvent(event);
   };
 
   describe('basic maths', function() {

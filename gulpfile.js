@@ -18,6 +18,7 @@ var scripts = [
 //FIXME: these are included here and in karma.conf.js
 var testDeps = [
   'node_modules/hogan.js/dist/hogan-3.0.2.js',
+  'node_modules/phantomjs-polyfill/bind-polyfill.js',
   'lib/templates/**/*.mustache'
 ];
 
