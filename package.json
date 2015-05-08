@@ -4,8 +4,7 @@
   "description": "web toolkit",
   "main": "index.html",
   "scripts": {
-    "test": "gulp test",
-    "postinstall": "gulp hook"
+    "test": "gulp test"
   },
   "author": "UDC",
   "license": "BSD-2-Clause",
