@@ -12,11 +12,17 @@ var paths = {
 
 var scripts = [
   'lib/**/*.js',
-  'test/**/*.js'
+  'test/**/*.js',
+];
+
+//FIXME: these are included here and in karma.conf.js
+var testDeps = [
+  'node_modules/hogan.js/dist/hogan-3.0.2.js',
+  'lib/templates/**/*.mustache'
 ];
 
 gulp.task('jasmine', function() {
-  return gulp.src(scripts)
+  return gulp.src(scripts.concat(testDeps))
     .pipe(karma({
       configFile: 'karma.conf.js',
       action: 'run'
