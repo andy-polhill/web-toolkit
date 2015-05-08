@@ -1,9 +1,6 @@
 'use strict';
-<<<<<<< HEAD
 /* global Calculator */
 /* global Hogan */
-=======
->>>>>>> 15b6486bd0ec90193ba03264cccaf54341371519
 describe('Calculator', function() {
 
   var tmpl;
@@ -19,11 +16,7 @@ describe('Calculator', function() {
   var changeInput = function(el, val) {
     el.value = val;
     el.dispatchEvent(new Event('change'));
-<<<<<<< HEAD
   };
-=======
-  }
->>>>>>> 15b6486bd0ec90193ba03264cccaf54341371519
 
   describe('basic maths', function() {
 
@@ -49,8 +42,4 @@ describe('Calculator', function() {
       expect(calc.result.textContent).toBe('0');
     });
   });
-<<<<<<< HEAD
 });
-=======
-})
->>>>>>> 15b6486bd0ec90193ba03264cccaf54341371519
