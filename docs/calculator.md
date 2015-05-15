@@ -1,25 +1,40 @@
 ---
 example1:
-  title: Adding
-  modifier: +
+  id: addition-calc
+  title: Addition
 example2:
-  title: Subtracting
-  modifier: -
+  id: subtraction-calc
+  title: Subtraction
 ---
+<script src="scripts/calculator.js"></script>
 
 #Calculator
 
-The calculator is our contrived sample component. It carries out simple arithmetic
-on two inputted values. It is configurable by passing context into it.
+The calculator is our contrived sample component. It carries out simple arithmetic on two inputted values. It is configurable by passing context into it.
 
 ##Example 1
 Adding two numbers
 {{#example1}}
-  {{> lib/templates/calculator.mustache}}
+  {{> calculator}}
 {{/example1}}
+
+<script>
+  new Calculator(document.getElementById('{{example1.id}}'), {
+    modifier: '+'
+  });
+</script>
 
 ##Example 2
 Subtracting two numbers
-{{#example1}}
-  {{> lib/templates/calculator.mustache}}
-{{/example1}}
+{{#preview:html}}
+  {{#example2}}
+    {{> calculator}}
+  {{/example2}}
+{{/preview:html}}
+{{#preview:js}}
+  <script>
+    new Calculator(document.getElementById('{{example2.id}}'), {
+      modifier: '-'
+    });
+  </script>
+{{/preview:js}}

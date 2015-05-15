@@ -7,6 +7,9 @@ describe('Calculator', function() {
 
   beforeEach(function() {
     tmpl = Hogan.compile(window.__html__['lib/templates/calculator.mustache']);
+    document.body.innerHTML = tmpl.render({
+      title: 'Addition'
+    });
   });
 
   afterEach(function() {
@@ -21,24 +24,19 @@ describe('Calculator', function() {
   };
 
   describe('basic maths', function() {
-
     it('should add two numbers', function() {
-      document.body.innerHTML = tmpl.render({
-        title: 'Addition',
+      var calc = new Calculator(document.querySelector('.js-calculator'), {
         modifier: '+'
       });
-      var calc = new Calculator(document.querySelector('.js-calculator'));
       changeInput(calc.add1, 1);
       changeInput(calc.add2, 1);
       expect(calc.result.textContent).toBe('2');
     });
 
     it('should subtract two numbers', function() {
-      document.body.innerHTML = tmpl.render({
-        title: 'Addition',
+      var calc = new Calculator(document.querySelector('.js-calculator'), {
         modifier: '-'
       });
-      var calc = new Calculator(document.querySelector('.js-calculator'));
       changeInput(calc.add1, 1);
       changeInput(calc.add2, 1);
       expect(calc.result.textContent).toBe('0');
