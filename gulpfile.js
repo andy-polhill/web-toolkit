@@ -3,6 +3,7 @@ var gutil = require('gulp-util');
 var open = require('gulp-open');
 var karma = require('gulp-karma');
 var jshint = require('gulp-jshint');
+var webpack = require('gulp-webpack');
 var jscs = require('gulp-jscs');
 var connect = require('gulp-connect');
 var frontMatter = require('gulp-front-matter');
@@ -12,11 +13,13 @@ var partialise = require('./tasks/partialise');
 var runSequence = require('run-sequence');
 var replace = require('gulp-replace');
 var del = require('del');
+var webpackConfig = require("./webpack.config.js");
 
 var paths = {
   docs: './docs/**/*.md',
   templates: './lib/templates/**/*.mustache',
   scripts: 'lib/**/*.js',
+  docScripts: './docs/**/*.js',
   tests: 'test/**/*.js',
   styles: [
     './node_modules/bootstrap/dist/css/**/*.css',
@@ -37,7 +40,7 @@ var testDeps = [
 ];
 
 gulp.task('jasmine', function() {
-  return gulp.src([paths.scripts, paths.tests].concat(testDeps))
+  return gulp.src([paths.tests].concat(testDeps))
     .pipe(karma({
       configFile: 'karma.conf.js',
       action: 'run'
@@ -61,9 +64,9 @@ gulp.task('jscs', function() {
     .pipe(jscs());
 });
 
-
 gulp.task('serve:js', function () {
-  return gulp.src(paths.scripts)
+  return gulp.src([paths.docScripts, paths.scripts])
+    .pipe(webpack(webpackConfig))
     .pipe(gulp.dest(paths.serveBase))
     .pipe(connect.reload());
 });
@@ -120,7 +123,7 @@ gulp.task('open', function(){
 gulp.task('watch', function () {
   gulp.watch([paths.templates], ['html']);
   gulp.watch([paths.docs], ['html']);
-  gulp.watch([paths.scripts], ['serve:js']);
+  gulp.watch([paths.docScripts, paths.scripts], ['serve:js']);
   gulp.watch([paths.scripts], ['serve:css']);
 });
 

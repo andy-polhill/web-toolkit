@@ -1,5 +1,6 @@
 {
   "browser": true,
+  "browserify": true,
   "bitwise": true,
   "immed": true,
   "newcap": true,

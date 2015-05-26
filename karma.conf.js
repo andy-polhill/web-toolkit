@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'lib/scripts/**/*.js',
+      //'lib/scripts/**/*.js',
       'test/**/*Spec.js',
       {pattern: 'lib/templates/**/*.mustache', watched: false},
       './node_modules/hogan.js/dist/hogan-3.0.2.js',
@@ -31,8 +31,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'lib/templates/**/*.mustache': ['html2js']
+      'lib/templates/**/*.mustache': ['html2js'],
+      'lib/scripts/**/*.js': ['webpack'],
+      'test/**/*.js': ['webpack']
     },
+
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

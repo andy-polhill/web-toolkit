@@ -35,8 +35,11 @@
     "karma-html2js-preprocessor": "^0.1.0",
     "karma-jasmine": "~0.3.5",
     "karma-phantomjs-launcher": "~0.1.4",
+    "karma-webpack": "^1.5.1",
+    "node-libs-browser": "^0.5.2",
     "phantomjs-polyfill": "0.0.1",
     "run-sequence": "^1.1.0",
-    "through2": "^0.6.5"
+    "through2": "^0.6.5",
+    "webpack": "^1.9.10"
   }
 }

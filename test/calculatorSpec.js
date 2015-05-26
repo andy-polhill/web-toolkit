@@ -1,4 +1,6 @@
 'use strict';
+var Calculator = require('../lib/scripts/calculator');
+
 /* global Calculator */
 /* global Hogan */
 describe('Calculator', function() {

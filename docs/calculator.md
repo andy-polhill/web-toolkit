@@ -6,7 +6,6 @@ example2:
   id: subtraction-calc
   title: Subtraction
 ---
-<script src="scripts/calculator.js"></script>
 
 #Calculator
 
@@ -18,12 +17,6 @@ Adding two numbers
   {{> calculator}}
 {{/example1}}
 
-<script>
-  new Calculator(document.getElementById('{{example1.id}}'), {
-    modifier: '+'
-  });
-</script>
-
 ##Example 2
 Subtracting two numbers
 {{#preview:html}}
@@ -32,9 +25,7 @@ Subtracting two numbers
   {{/example2}}
 {{/preview:html}}
 {{#preview:js}}
-  <script>
-    new Calculator(document.getElementById('{{example2.id}}'), {
-      modifier: '-'
-    });
-  </script>
+  TODO: This would only work with inline scripts
 {{/preview:js}}
+
+<script type="text/javascript" src="./bundle.js" charset="utf-8"></script>
