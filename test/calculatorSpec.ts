@@ -1,19 +1,27 @@
 'use strict';
 /* global Calculator */
 /* global Hogan */
+
+/// <amd-dependency path="lib/scripts/calculator.js"/>
+import Calculator = require('lib/scripts/calculator');
+
 describe('Calculator', function() {
 
-  var tmpl;
+  var tmpl, add1, add2, result;
 
   beforeEach(function() {
     tmpl = Hogan.compile(window.__html__['lib/templates/calculator.mustache']);
     document.body.innerHTML = tmpl.render({
       title: 'Addition'
     });
+    add1 = document.body.querySelector(Calculator.SELECTORS.ADDEND1);
+    add2 = document.body.querySelector(Calculator.SELECTORS.ADDEND2);
+    result = document.body.querySelector(Calculator.SELECTORS.RESULT);
   });
 
   afterEach(function() {
-    document.body.innerHtml = '';
+    var body: HTMLElement = document.body;
+    body.innerHTML = '';
   });
 
   var changeInput = function(el, val) {
@@ -28,18 +36,18 @@ describe('Calculator', function() {
       var calc = new Calculator(document.querySelector('.js-calculator'), {
         modifier: '+'
       });
-      changeInput(calc.add1, 1);
-      changeInput(calc.add2, 1);
-      expect(calc.result.textContent).toBe('2');
+      changeInput(add1, 1);
+      changeInput(add2, 1);
+      expect(result.textContent).toBe('2');
     });
 
     it('should subtract two numbers', function() {
       var calc = new Calculator(document.querySelector('.js-calculator'), {
         modifier: '-'
       });
-      changeInput(calc.add1, 1);
-      changeInput(calc.add2, 1);
-      expect(calc.result.textContent).toBe('0');
+      changeInput(add1, 1);
+      changeInput(add2, 1);
+      expect(result.textContent).toBe('0');
     });
   });
 });
