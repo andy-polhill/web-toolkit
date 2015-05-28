@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var open = require('gulp-open');
 var karma = require('gulp-karma');
+var typescript = require('gulp-typescript');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var connect = require('gulp-connect');
@@ -16,8 +17,9 @@ var del = require('del');
 var paths = {
   docs: './docs/**/*.md',
   templates: './lib/templates/**/*.mustache',
-  scripts: 'lib/**/*.js',
-  tests: 'test/**/*.js',
+  scripts: 'scripts/**/*.ts',
+  docScripts: 'docs/*Doc.ts',
+  tests: 'test/**/*.ts',
   styles: [
     './node_modules/bootstrap/dist/css/**/*.css',
     './node_modules/highlight/lib/vendor/highlight.js/styles/default.css'
@@ -33,7 +35,8 @@ var config = {
 var testDeps = [
   'node_modules/hogan.js/dist/hogan-3.0.2.js',
   'node_modules/phantomjs-polyfill/bind-polyfill.js',
-  'lib/templates/**/*.mustache'
+  'node_modules/requirejs/require.js',
+  './lib/templates/**/*.mustache'
 ];
 
 gulp.task('jasmine', function() {
@@ -61,9 +64,26 @@ gulp.task('jscs', function() {
     .pipe(jscs());
 });
 
-
 gulp.task('serve:js', function () {
-  return gulp.src(paths.scripts)
+  return gulp.src(testDeps)
+    .pipe(gulp.dest(paths.serveBase))
+    .pipe(connect.reload());
+});
+
+gulp.task('serve:ts', function () {
+  return gulp.src(paths.scripts, {cwd: 'lib/**'})
+    .pipe(typescript({
+      module: 'amd'
+    }))
+    .pipe(gulp.dest(paths.serveBase + '/lib')) //kludge!
+    .pipe(connect.reload());
+});
+
+gulp.task('serve:tsDocs', function () {
+  return gulp.src(paths.docScripts)
+    .pipe(typescript({
+      module: 'amd'
+    }))
     .pipe(gulp.dest(paths.serveBase))
     .pipe(connect.reload());
 });
@@ -120,12 +140,14 @@ gulp.task('open', function(){
 gulp.task('watch', function () {
   gulp.watch([paths.templates], ['html']);
   gulp.watch([paths.docs], ['html']);
-  gulp.watch([paths.scripts], ['serve:js']);
+  gulp.watch([paths.scripts], ['serve:ts']);
+  gulp.watch([paths.docScripts], ['serve:tsDocs']);
   gulp.watch([paths.scripts], ['serve:css']);
 });
 
 gulp.task('serve', function() {
-  runSequence('serve:clean', ['serve:css', 'serve:js', 'html'], 'connect', ['open','watch']);
+  runSequence('serve:clean', ['serve:css', 'serve:ts', 'serve:tsDocs', 'serve:js', 'html'], 'connect', ['open','watch']);
 });
 
-gulp.task('test', ['jshint', 'jscs', 'jasmine']);
+//JSCS does not currently support typescript
+gulp.task('test', [/*'jshint', 'jscs',*/ 'jasmine']);

@@ -15,6 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      {pattern: '**/*.js.map', included: false},
       {pattern: 'lib/scripts/**/*.ts', included: false},
       {pattern: 'test/**/*Spec.ts', included: false},
       {pattern: 'lib/templates/**/*.mustache', watched: false},
@@ -41,7 +42,7 @@ module.exports = function(config) {
     typescriptPreprocessor: {
       // options passed to the typescript compiler
       options: {
-        //sourceMap: false, // (optional) Generates corresponding .map file.
+        sourceMap: true, // (optional) Generates corresponding .map file.
         target: 'ES5', // (optional) Specify ECMAScript target version: 'ES3' (default), or 'ES5'
         module: 'amd', // (optional) Specify module code generation: 'commonjs' or 'amd'
         //noImplicitAny: true, // (optional) Warn on expressions and declarations with an implied 'any' type.

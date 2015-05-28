@@ -1,13 +1,18 @@
+//sourceMappingUrl=calculatorSpec.js.map
+///<reference path="../typings/tsd.d.ts"/>
 'use strict';
+
+import Calculator = require('lib/scripts/calculator');
+
 /* global Calculator */
 /* global Hogan */
 
-/// <amd-dependency path="lib/scripts/calculator.js"/>
-import Calculator = require('lib/scripts/calculator');
-
 describe('Calculator', function() {
 
-  var tmpl, add1, add2, result;
+  var tmpl: any;
+  var add1: Element;
+  var add2: Element;
+  var result: Element;
 
   beforeEach(function() {
     tmpl = Hogan.compile(window.__html__['lib/templates/calculator.mustache']);

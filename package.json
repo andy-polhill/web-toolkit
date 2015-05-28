@@ -23,6 +23,7 @@
     "gulp-markdown": "^1.0.0",
     "gulp-open": "^0.3.2",
     "gulp-replace": "^0.5.3",
+    "gulp-typescript": "^2.7.5",
     "gulp-util": "^3.0.4",
     "highlight": "^0.2.3",
     "hogan.js": "~3.0.2",

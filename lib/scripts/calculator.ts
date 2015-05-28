@@ -1,3 +1,4 @@
+//sourceMappingUrl=calculator.js.map
 'use strict';
 /* This is just a contrived sample component, for use as a starting point
  * From this we should be able to determine a common style & structure
@@ -7,10 +8,10 @@
 class Calculator {
 
   private modifier: string;
-  private el: any;
-  private add1: any;
-  private add2: any;
-  private result: any;
+  private el: HTMLElement;
+  private add1: HTMLInputElement;
+  private add2: HTMLInputElement;
+  private result: HTMLElement;
 
   static SELECTORS = {
     ADDEND1: '.js-addend-1',
@@ -21,10 +22,11 @@ class Calculator {
   constructor(el: any, opts: any) {
     this.el = el;
     this.modifier = opts.modifier;
-    this.add1 = this.el.querySelector(Calculator.SELECTORS.ADDEND1);
-    this.add2 = this.el.querySelector(Calculator.SELECTORS.ADDEND2);
-    this.result = this.el.querySelector(Calculator.SELECTORS.RESULT);
-    this.el.querySelector('.js-modifier').innerHTML = this.modifier;
+    this.add1 = <HTMLInputElement>this.el.querySelector(Calculator.SELECTORS.ADDEND1);
+    this.add2 = <HTMLInputElement>this.el.querySelector(Calculator.SELECTORS.ADDEND2);
+    this.result = <HTMLElement>this.el.querySelector(Calculator.SELECTORS.RESULT);
+    var modifier: HTMLElement = <HTMLElement>this.el.querySelector('.js-modifier');
+    modifier.innerHTML = this.modifier;
 
     //Listeners
     this.add1.addEventListener('change', this.calculate.bind(this), false);

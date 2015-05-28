@@ -6,7 +6,7 @@ example2:
   id: subtraction-calc
   title: Subtraction
 ---
-<script src="scripts/calculator.js"></script>
+<script type="text/javascript" src="require.js" data-main="calculatorDoc.js"></script>
 
 #Calculator
 
@@ -18,12 +18,6 @@ Adding two numbers
   {{> calculator}}
 {{/example1}}
 
-<script>
-  new Calculator(document.getElementById('{{example1.id}}'), {
-    modifier: '+'
-  });
-</script>
-
 ##Example 2
 Subtracting two numbers
 {{#preview:html}}
@@ -31,10 +25,3 @@ Subtracting two numbers
     {{> calculator}}
   {{/example2}}
 {{/preview:html}}
-{{#preview:js}}
-  <script>
-    new Calculator(document.getElementById('{{example2.id}}'), {
-      modifier: '-'
-    });
-  </script>
-{{/preview:js}}
