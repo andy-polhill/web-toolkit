@@ -11,4 +11,4 @@ deployment:
       - gulp build
       - git checkout -b gh-pages
       - git merge master
-      - git commit -a -m "Circle CI"
+      - git commit -a -m "Circle build %CIRCLE_BUILD_NUM%"
