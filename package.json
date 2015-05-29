@@ -4,7 +4,8 @@
   "description": "web toolkit",
   "main": "index.html",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "deploy": "deploy.sh"
   },
   "author": "UDC",
   "license": "BSD-2-Clause",
