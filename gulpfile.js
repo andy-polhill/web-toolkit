@@ -128,4 +128,8 @@ gulp.task('serve', function() {
   runSequence('serve:clean', ['serve:css', 'serve:js', 'html'], 'connect', ['open','watch']);
 });
 
+gulp.task('build', function() {
+  runSequence('serve:clean', ['serve:css', 'serve:js', 'html']);
+});
+
 gulp.task('test', ['jshint', 'jscs', 'jasmine']);
