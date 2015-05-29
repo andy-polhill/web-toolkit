@@ -9,3 +9,6 @@ deployment:
       - npm install
       - npm install -g gulp
       - gulp build
+      - git checkout -b gh-pages
+      - git merge master
+      - git commit -a -m "Circle CI"
