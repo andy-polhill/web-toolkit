@@ -6,4 +6,5 @@ deployment:
   production:
     branch: master
     commands:
-      - ./node_modules/gulp/bin/gulp.js build
+      - npm install
+      - gulp build
