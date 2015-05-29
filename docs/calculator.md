@@ -13,19 +13,12 @@ The calculator is our contrived sample component. It carries out simple arithmet
 
 ##Example 1
 Adding two numbers
-{{#example1}}
-  {{> calculator}}
-{{/example1}}
+<div id="{{example1.id}}">
+</div>
 
 ##Example 2
 Subtracting two numbers
-{{#preview:html}}
-  {{#example2}}
-    {{> calculator}}
-  {{/example2}}
-{{/preview:html}}
-{{#preview:js}}
-  TODO: This would only work with inline scripts
-{{/preview:js}}
+<div id="{{example2.id}}">
+</div>
 
 <script type="text/javascript" src="./bundle.js" charset="utf-8"></script>
