@@ -1,4 +1,7 @@
 # web-toolkit
+
+<img src="https://circleci.com/gh/thatguynamedandy/web-toolkit.png?circle-token=:circle-token" />
+
 A generic toolkit for importing into web projects.
 
 To contribute to this toolkit, first clone the repo and then.
