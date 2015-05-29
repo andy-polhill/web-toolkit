@@ -125,7 +125,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('serve', function() {
-  runSequence('serve:clean', ['serve:css', 'serve:js', 'html'], 'connect', ['open','watch']);
+  runSequence('build', 'connect', ['open','watch']);
 });
 
 gulp.task('build', function() {
