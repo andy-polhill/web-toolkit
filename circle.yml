@@ -12,6 +12,9 @@ deployment:
       - npm install -g gulp
       - gulp build
       - mkdir DELETE
-      - mv * DELETE
+      - cd DELETE
+      - mv ../* .
+      - cd ../
       - mv DELETE/.tmp ./
+      - rm -R -f DELETE
       - git commit -a -m "Circle build ${CIRCLE_BUILD_NUM}"
