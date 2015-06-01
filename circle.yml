@@ -6,9 +6,12 @@ deployment:
   production:
     branch: master
     commands:
+      - git checkout -b gh-pages
+      - git merge master
       - npm install
       - npm install -g gulp
       - gulp build
-      - git checkout -b gh-pages
-      - git merge master
-      - git commit -a -m "Circle build %CIRCLE_BUILD_NUM%"
+      - mkdir DELETE
+      - mv * DELETE
+      - mv DELETE/.tmp ./
+      - git commit -a -m "Circle build ${CIRCLE_BUILD_NUM}"
